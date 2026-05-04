@@ -1,0 +1,401 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import { site } from '../data/site';
+
+const sections = [
+  {
+    num: '1',
+    title: '政策目的',
+    body: `本政策說明廖偉翔立法委員辦公室（以下簡稱「本辦公室」）在使用 Meta（Facebook、Instagram、Threads）所提供之 Graph API 與相關技術介接時，對個人資料之收集、處理、利用方式，依據《個人資料保護法》及相關規範訂定。`,
+  },
+];
+---
+<BaseLayout
+  title="個人資料保護政策｜廖偉翔立法委員辦公室"
+  description="廖偉翔立法委員辦公室在使用 Meta（Facebook、Instagram、Threads）所提供之 Graph API 與相關技術介接時，對個人資料之收集、處理、利用方式說明。"
+>
+  <Nav />
+  <main id="main" class="legal-page">
+    <header class="legal-header">
+      <div class="container">
+        <SectionLabel number="00" label="LEGAL · 法律聲明" />
+        <h1>個人資料保護政策</h1>
+        <p class="legal-meta">
+          <span>發布日期：2026-04-27</span>
+          <span aria-hidden="true">·</span>
+          <span>最後更新：2026-04-27</span>
+        </p>
+        <dl class="legal-front">
+          <div>
+            <dt>適用範圍</dt>
+            <dd>本辦公室內部資料分析工具對社群媒體公開內容之處理</dd>
+          </div>
+          <div>
+            <dt>承辦單位</dt>
+            <dd>廖偉翔立法委員辦公室（{site.contact.address}，電話 {site.contact.phone}）</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <article class="legal-content">
+      <div class="container">
+        <section class="legal-block legal-zh" lang="zh-Hant" aria-labelledby="zh-heading">
+          <h2 id="zh-heading" class="visually-hidden">中文（正式版本）</h2>
+
+          <section aria-labelledby="s1">
+            <h3 id="s1"><span class="num">01</span>政策目的</h3>
+            <p>
+              本政策說明廖偉翔立法委員辦公室（以下簡稱「本辦公室」）在使用 Meta（Facebook、Instagram、Threads）所提供之 Graph API 與相關技術介接時，對個人資料之收集、處理、利用方式，依據《個人資料保護法》及相關規範訂定。
+            </p>
+          </section>
+
+          <section aria-labelledby="s2">
+            <h3 id="s2"><span class="num">02</span>資料來源與範圍</h3>
+            <p>本辦公室透過 Meta Graph API 介接以下平台之<strong>已公開內容</strong>：</p>
+            <ul>
+              <li>Facebook 粉絲專頁「廖偉翔」（Page ID: 113115841660729）</li>
+              <li>Instagram 帳號 @seanliao.24（Business Account ID: 17841457429938145）</li>
+              <li>Threads 帳號 @seanliao.24（User ID: 25792733643737197）</li>
+            </ul>
+
+            <p class="sub-heading">所收集之資料類型：</p>
+            <ul>
+              <li>本辦公室自行發布之貼文、留言、回覆、圖片、影片</li>
+              <li>公眾於上述帳號所發布之<strong>公開</strong>留言、按讚數、分享數、其他公開互動資料</li>
+              <li>本辦公室之廣告投放成效統計（點擊率、觸及人數、人口統計分布）</li>
+              <li>透過 Messenger 主動聯絡本辦公室之訊息內容</li>
+            </ul>
+
+            <p class="sub-heading">不收集之資料：</p>
+            <ul>
+              <li>任何使用者之<strong>私訊內容</strong>（除非使用者主動聯絡本辦公室之 Messenger）</li>
+              <li>使用者之私人通訊錄、好友清單、私人貼文</li>
+              <li>任何非公開之個人資料</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="s3">
+            <h3 id="s3"><span class="num">03</span>資料利用目的</h3>
+            <p>本辦公室收集上述資料之目的限於：</p>
+            <ul>
+              <li><strong>內部營運分析</strong>：理解選民關切議題、政策溝通成效、社群觸及範圍</li>
+              <li><strong>回應選民訊息</strong>：透過 Messenger 收到之選民來訊，由辦公室同仁人工回覆。本辦公室不使用自動回覆機器人主動發送訊息</li>
+              <li><strong>政績紀錄</strong>：作為立委任期內公開政策溝通之歷史紀錄</li>
+              <li><strong>內容策略優化</strong>：分析不同類型內容於不同平台之表現差異</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="s4">
+            <h3 id="s4"><span class="num">04</span>資料保留期限</h3>
+            <ul>
+              <li>公開貼文、留言、互動數據：保留至本立委任期結束後 7 年（依《立法院職權行使法》與《公文程式條例》）</li>
+              <li>Messenger 訊息：處理完畢後 30 天內銷毀（除非為選民服務案件，依《選民服務作業規範》保留）</li>
+              <li>廣告投放成效資料：保留 3 年作為內部報告用</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="s5">
+            <h3 id="s5"><span class="num">05</span>資料存取權限</h3>
+            <p>
+              本辦公室授權同仁（4 人，含立委本人）始能存取所收集資料。資料儲存於本辦公室加密設備，不上傳至第三方雲端服務。
+            </p>
+          </section>
+
+          <section aria-labelledby="s6">
+            <h3 id="s6"><span class="num">06</span>第三方分享</h3>
+            <p>
+              本辦公室<strong>不將</strong>所收集之資料分享、出售、移轉予任何第三方，包括但不限於：
+            </p>
+            <ul>
+              <li>政黨或政治團體</li>
+              <li>商業公司或行銷機構</li>
+              <li>其他立法委員辦公室</li>
+            </ul>
+            <p>例外：依法律強制規範（如法院傳票、檢察官命令）必須提供時。</p>
+          </section>
+
+          <section aria-labelledby="s7">
+            <h3 id="s7"><span class="num">07</span>資料安全措施</h3>
+            <ul>
+              <li>所有 API 存取憑證（Access Token）儲存於本機加密環境，不進版本控制系統</li>
+              <li>內部工具運行於受控環境，不對外開放網路介面</li>
+              <li>定期更換 API 憑證（每 60–90 天輪替）</li>
+              <li>任何資料外洩事件依《個人資料保護法》第 12 條於發現後 72 小時內通知主管機關</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="s8">
+            <h3 id="s8"><span class="num">08</span>您的權利</h3>
+            <p>依《個人資料保護法》第 3 條，您對本辦公室所持有關於您之個人資料享有以下權利：</p>
+            <ul>
+              <li>查詢或請求閱覽</li>
+              <li>請求製給複製本</li>
+              <li>請求補充或更正</li>
+              <li>請求停止蒐集、處理或利用</li>
+              <li>請求刪除</li>
+            </ul>
+            <p class="sub-heading">如欲行使上述權利，請透過下列方式聯絡：</p>
+            <ul>
+              <li>電話：<a href={`tel:${site.contact.phone}`}>{site.contact.phone}</a></li>
+              <li>Facebook 粉專私訊：<a href="https://www.facebook.com/seanliao76" target="_blank" rel="noopener noreferrer">facebook.com/seanliao76</a></li>
+              <li>辦公室地址：{site.contact.address}</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="s9">
+            <h3 id="s9"><span class="num">09</span>Cookies 與追蹤技術</h3>
+            <p>
+              本辦公室不使用第三方追蹤技術。Meta 平台本身使用之 Cookies 由 Meta 公司管理，請參閱 <a href="https://www.facebook.com/policy.php" target="_blank" rel="noopener noreferrer">Meta 隱私政策</a>。
+            </p>
+          </section>
+
+          <section aria-labelledby="s10">
+            <h3 id="s10"><span class="num">10</span>政策變更</h3>
+            <p>
+              本政策若有變更，將於本頁面公告。重大變更（如資料利用目的擴張）將於本辦公室 Facebook 粉絲專頁公告。
+            </p>
+          </section>
+
+          <section aria-labelledby="s11">
+            <h3 id="s11"><span class="num">11</span>主管機關</h3>
+            <p>
+              本辦公室個人資料處理活動依《個人資料保護法》接受<strong>國家發展委員會</strong>監督。如對本政策有疑義或有侵害個人資料權利之爭議，可向該會提出申訴。
+            </p>
+          </section>
+        </section>
+
+        <hr class="legal-divider" />
+
+        <section class="legal-block legal-en" lang="en" aria-labelledby="en-heading">
+          <h2 id="en-heading">English Summary (For Meta App Review)</h2>
+
+          <p>
+            This is the privacy policy of Legislator Liao Wei-Hsiang's Office, governing our use of Meta Graph API for internal constituent engagement analysis.
+          </p>
+
+          <p>
+            <strong>What we collect:</strong> Publicly available posts, comments, and engagement metrics on our official Facebook Page, Instagram, and Threads accounts; ad performance metrics for our own ads; messages from constituents who initiate contact via Messenger.
+          </p>
+
+          <p>
+            <strong>What we do NOT collect:</strong> Private messages from users we did not contact; users' private profiles, friends lists, or non-public content; data from accounts other than the legislator's own.
+          </p>
+
+          <p>
+            <strong>Purpose:</strong> Internal analysis only — understanding constituent concerns, optimizing content strategy, recording legislative communication. Data is NOT sold or shared with third parties.
+          </p>
+
+          <p>
+            <strong>Access:</strong> Restricted to 4 authorized office staff including the legislator.
+          </p>
+
+          <p>
+            <strong>Retention:</strong> Public engagement data kept for the legislator's term + 7 years per Taiwan archival law; Messenger messages destroyed within 30 days unless part of an ongoing constituent service case.
+          </p>
+
+          <p>
+            <strong>User rights:</strong> Per Taiwan Personal Data Protection Act, users may request access, correction, or deletion of their data by contacting our office at +886-4-2317-9955 or via our Facebook Page.
+          </p>
+
+          <p>
+            <strong>Contact:</strong> Legislator Liao Wei-Hsiang's Office, {site.contact.address}, Taichung, Taiwan. Phone: +886-4-2317-9955.
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    background: var(--color-bg);
+  }
+
+  .legal-header {
+    padding: var(--space-7) 0 var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .legal-header h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  .legal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    color: var(--color-text-mute);
+    font-size: 0.85rem;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-5);
+  }
+
+  .legal-front {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-4);
+  }
+
+  .legal-front > div {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.95rem;
+  }
+
+  .legal-front dt {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+    padding-top: 4px;
+  }
+
+  .legal-front dd {
+    color: var(--color-text);
+    line-height: 1.55;
+  }
+
+  .legal-content {
+    padding: var(--space-7) 0 var(--space-8);
+  }
+
+  .legal-content .container {
+    max-width: 760px;
+  }
+
+  .legal-block {
+    font-size: 1.025rem;
+    line-height: 1.85;
+    color: var(--color-text);
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .legal-zh > section,
+  .legal-en {
+    margin-bottom: var(--space-6);
+  }
+
+  .legal-zh h3 {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+  }
+
+  .legal-zh h3 .num {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.75em;
+    color: var(--color-accent-dark);
+    flex-shrink: 0;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .legal-en h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+    font-style: italic;
+    letter-spacing: 0.01em;
+  }
+
+  .legal-block p {
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-block .sub-heading {
+    margin-top: var(--space-3);
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .legal-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-3);
+  }
+
+  .legal-block ul li {
+    position: relative;
+    padding-left: var(--space-4);
+    margin-bottom: var(--space-2);
+    line-height: 1.7;
+  }
+
+  .legal-block ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .legal-block strong {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .legal-block a {
+    color: var(--color-accent-dark);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .legal-block a:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .legal-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-7) 0;
+    position: relative;
+  }
+
+  .legal-divider::after {
+    content: '§';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg);
+    padding: 0 var(--space-3);
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-accent);
+  }
+</style>

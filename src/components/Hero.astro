@@ -1,0 +1,306 @@
+---
+import { site } from '../data/site';
+---
+<section class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <img
+          src="/photos/portrait.jpg"
+          alt="廖偉翔"
+          width="640"
+          height="800"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <span class="portrait-tag">11<sup>th</sup>　LEGISLATOR</span>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        <span class="eyebrow-mark">§</span>
+        中華民國立法院　/　第 11 屆
+      </p>
+
+      <h1 class="hero-name">
+        <span class="name-zh">{site.name}</span>
+        <span class="name-en">{site.nameEn}</span>
+      </h1>
+
+      <div class="hero-meta">
+        <span>{site.legislator}</span>
+        <span class="meta-dot" aria-hidden="true"></span>
+        <span>{site.committee}　{site.role}</span>
+      </div>
+
+      <p class="hero-slogan">{site.slogan}</p>
+
+      <div class="hero-cta">
+        <a href="/about" class="btn btn-primary">
+          <span>關於我</span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <a href={`tel:${site.contact.phone}`} class="btn btn-ghost">聯絡服務處</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: var(--space-7) 0 var(--space-8);
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-primary) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-primary) 5%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: -1px -1px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 25%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  @media (min-width: 880px) {
+    .hero-inner {
+      grid-template-columns: 5fr 7fr;
+      gap: var(--space-7);
+    }
+  }
+
+  /* Portrait */
+  .hero-portrait {
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+    width: 100%;
+    animation: hero-rise 0.7s ease both;
+  }
+
+  .portrait-frame {
+    aspect-ratio: 4 / 5;
+    background: var(--color-primary);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+  }
+
+  .portrait-frame::after {
+    content: '';
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    width: 28px;
+    height: 28px;
+    border-top: 2px solid var(--color-accent);
+    border-left: 2px solid var(--color-accent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .portrait-tag {
+    position: absolute;
+    bottom: -16px;
+    right: -8px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+  }
+
+  .portrait-tag sup {
+    font-size: 0.65em;
+    margin-right: 1px;
+  }
+
+  /* Content */
+  .hero-content {
+    animation: hero-fade-up 0.7s 0.15s ease both;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-accent-dark);
+    margin-bottom: var(--space-3);
+  }
+
+  .eyebrow-mark {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+
+  .hero-name {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: var(--space-4);
+  }
+
+  .name-zh {
+    display: block;
+    font-size: clamp(3rem, 9vw, 5.75rem);
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+  }
+
+  .name-en {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    color: var(--color-text-mute);
+    margin-top: var(--space-2);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .meta-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-slogan {
+    font-family: var(--font-serif);
+    font-size: clamp(1.125rem, 2vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--color-text);
+    margin-bottom: var(--space-5);
+    max-width: 32em;
+    padding-left: var(--space-3);
+    border-left: 2px solid var(--color-accent);
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-light);
+    color: var(--color-bg);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content,
+    .hero-portrait {
+      animation: none;
+    }
+  }
+</style>

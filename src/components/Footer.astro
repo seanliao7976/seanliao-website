@@ -1,0 +1,241 @@
+---
+import Icons from './Icons.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+
+const iconMap: Record<string, 'facebook' | 'instagram' | 'at-sign'> = {
+  'lucide:facebook': 'facebook',
+  'lucide:instagram': 'instagram',
+  'lucide:at-sign': 'at-sign',
+};
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="col col-brand">
+      <span class="footer-mark" aria-hidden="true">SL</span>
+      <p class="footer-name">{site.name}</p>
+      <p class="footer-title">{site.legislator}</p>
+      <p class="footer-district">{site.district}</p>
+    </div>
+
+    <div class="col">
+      <h4 class="heading">服務處</h4>
+      <ul class="info-list">
+        <li>
+          <span class="info-key">地址</span>
+          <span>{site.contact.address}</span>
+        </li>
+        <li>
+          <span class="info-key">電話</span>
+          <a href={`tel:${site.contact.phone}`}>{site.contact.phone}</a>
+        </li>
+        <li>
+          <span class="info-key">時間</span>
+          <span>{site.contact.hours}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4 class="heading">追蹤</h4>
+      <ul class="social-list">
+        {site.social.map((s) => (
+          <li>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${s.name}（在新分頁開啟）`}
+            >
+              <Icons name={iconMap[s.icon] ?? 'arrow-up-right'} size={18} />
+              <span>{s.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} {site.name}立法委員辦公室　保留所有權利</p>
+    <p><a href="/privacy">隱私政策</a></p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-8);
+    padding-top: var(--space-7);
+    background: var(--color-primary);
+    color: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-accent) 35%,
+      var(--color-accent) 65%,
+      transparent 100%
+    );
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding-bottom: var(--space-6);
+  }
+
+  @media (min-width: 720px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  .col-brand .footer-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border-radius: 10px;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-3);
+  }
+
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-bg);
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-title {
+    font-size: 0.95rem;
+    color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    margin-bottom: 2px;
+  }
+
+  .footer-district {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-bg) 60%, transparent);
+  }
+
+  .heading {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .info-list,
+  .social-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-list li {
+    display: flex;
+    gap: var(--space-3);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-2);
+    line-height: 1.5;
+  }
+
+  .info-key {
+    flex-shrink: 0;
+    width: 36px;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    padding-top: 4px;
+  }
+
+  .info-list a {
+    color: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 28%, transparent);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .info-list a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .social-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .social-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: var(--space-1) 0;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .social-list a:hover {
+    color: var(--color-accent);
+    transform: translateX(2px);
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-3);
+    border-top: 1px solid color-mix(in srgb, var(--color-bg) 12%, transparent);
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-bg) 55%, transparent);
+  }
+
+  @media (min-width: 720px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-bottom a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 25%, transparent);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .footer-bottom a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>

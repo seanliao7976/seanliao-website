@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="找不到頁面｜廖偉翔"
+  description="您所訪問的頁面不存在。"
+>
+  <Nav />
+  <main id="main" class="not-found">
+    <div class="container nf-inner">
+      <span class="nf-code" aria-hidden="true">404</span>
+      <p class="nf-eyebrow">
+        <span class="eyebrow-mark">§</span>
+        ERROR · NOT FOUND
+      </p>
+      <h1 class="nf-title">這裡沒有頁面</h1>
+      <p class="nf-text">您訪問的網址不存在或已被移除。或許從首頁重新開始？</p>
+      <div class="nf-actions">
+        <a href="/" class="btn btn-primary">
+          <span>回到首頁</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <a href="/about" class="btn btn-ghost">關於我</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-7) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .not-found::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-primary) 4%, transparent) 1px, transparent 1px);
+    background-size: 64px 100%;
+    mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .nf-inner {
+    text-align: center;
+    max-width: 540px;
+    position: relative;
+  }
+
+  .nf-code {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: clamp(5.5rem, 16vw, 10rem);
+    font-weight: 700;
+    line-height: 0.95;
+    color: var(--color-accent);
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-3);
+  }
+
+  .nf-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: var(--color-accent-dark);
+    margin-bottom: var(--space-3);
+  }
+
+  .eyebrow-mark {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+  }
+
+  .nf-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+    line-height: 1.2;
+  }
+
+  .nf-text {
+    color: var(--color-text-mute);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-5);
+    max-width: 28em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nf-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-bg);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-light);
+    color: var(--color-bg);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+</style>

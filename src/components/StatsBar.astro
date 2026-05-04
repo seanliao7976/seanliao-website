@@ -1,0 +1,119 @@
+---
+import { site } from '../data/site';
+---
+<section class="stats" aria-label="任內成績">
+  <div class="container">
+    <div class="stats-grid">
+      {site.stats.map((stat, i) => (
+        <article class="stat">
+          <span class="index">0{i + 1}</span>
+          <div class="value">
+            <span class="number">{stat.value}</span>
+            <span class="unit">{stat.unit}</span>
+          </div>
+          <p class="label">{stat.label}</p>
+          <p class="sub">{stat.sub}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="bg-noise" aria-hidden="true"></div>
+</section>
+
+<style>
+  .stats {
+    position: relative;
+    background: var(--color-primary);
+    color: var(--color-bg);
+    padding: var(--space-7) 0;
+    overflow: hidden;
+  }
+
+  .stats::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 80% 0%, color-mix(in srgb, var(--color-accent) 22%, transparent) 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--color-secondary) 80%, transparent) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .bg-noise {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-bg) 6%, transparent) 1px, transparent 1px);
+    background-size: 80px 100%;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .stats-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 720px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-7);
+    }
+  }
+
+  .stat {
+    position: relative;
+    padding-left: var(--space-4);
+    border-left: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);
+  }
+
+  .index {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .value {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .number {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 9vw, 5.5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--color-bg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .unit {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  }
+
+  .label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-bg);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-1);
+  }
+
+  .sub {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-bg) 65%, transparent);
+  }
+</style>
