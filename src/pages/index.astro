@@ -1,335 +1,138 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import StatsBar from '../components/StatsBar.astro';
-import SectionLabel from '../components/SectionLabel.astro';
-import PolicyCard from '../components/PolicyCard.astro';
+// 暫時鎖站——網站建置中 holding page（內容 WIP，待獨立專案完成後 `git revert` 復原）。
+// 自足頁：不 import Nav/Footer/BaseLayout，避免連到已鎖起來的路由。
 import { site } from '../data/site';
-
-const policyHighlights = [
-  {
-    number: '01',
-    title: '[政策亮點 1 標題]',
-    description: '[1-2 行說明這個政策的核心訴求和進展。文字節奏參考 voice.md 的「我」「其實」標記詞，先點問題再給方向。]',
-  },
-  {
-    number: '02',
-    title: '[政策亮點 2 標題]',
-    description: '[1-2 行說明這個政策的核心訴求和進展。同上節奏。]',
-  },
-  {
-    number: '03',
-    title: '[政策亮點 3 標題]',
-    description: '[1-2 行說明這個政策的核心訴求和進展。同上節奏。]',
-  },
-];
-
-const commitments = [
-  { mark: '一', title: '[服務承諾 1]', description: '[1-2 行：例如 24 小時內回覆選民訊息。]' },
-  { mark: '二', title: '[服務承諾 2]', description: '[1-2 行：例如有錯就認、不糊弄。]' },
-  { mark: '三', title: '[服務承諾 3]', description: '[1-2 行：例如深夜還在工作的承諾。]' },
-];
+const tel = site.contact.phone.replace(/[^0-9+]/g, '');
 ---
-<BaseLayout>
-  <Nav />
-  <main id="main">
-    <Hero />
-    <StatsBar />
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.name}｜網站建置中</title>
+    <meta name="robots" content="noindex" />
+    <meta name="description" content={`${site.name}（${site.legislator}）官方網站建置中，敬請期待。服務處持續為鄉親服務。`} />
+  </head>
+  <body>
+    <main class="wrap">
+      <article class="card">
+        <p class="eyebrow">{site.legislator}</p>
+        <h1 class="name">{site.name}</h1>
+        <p class="district">{site.district}</p>
 
-    <section class="section policies">
-      <div class="container">
-        <SectionLabel number="01" label="POLICY · 政策推進" />
-        <h2 class="section-title">政策推進中</h2>
-        <p class="section-intro">
-          [一段話介紹偉翔最在乎的議題方向，承接 hero 的 slogan，引出三張卡片。約 50-80 字。]
-        </p>
+        <span class="rule" aria-hidden="true"></span>
 
-        <div class="policy-grid">
-          {policyHighlights.map((p) => (
-            <PolicyCard number={p.number} title={p.title} description={p.description} />
+        <p class="headline">網站建置中</p>
+        <p class="lead">官網正在重新整理，敬請期待。<br />服務處持續為鄉親服務，歡迎來電或來訪。</p>
+
+        <dl class="contact">
+          <div class="row"><dt>服務處</dt><dd>{site.contact.address}</dd></div>
+          <div class="row"><dt>電話</dt><dd><a href={`tel:${tel}`}>{site.contact.phone}</a></dd></div>
+          <div class="row"><dt>時間</dt><dd>{site.contact.hours}</dd></div>
+        </dl>
+
+        <nav class="social" aria-label="社群連結">
+          {site.social.map((s) => (
+            <a href={s.url} target="_blank" rel="noopener">{s.name}</a>
           ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section commitments">
-      <div class="container">
-        <SectionLabel number="02" label="COMMITMENT · 服務承諾" />
-        <h2 class="section-title">三件事，我說到做到</h2>
-
-        <div class="commit-grid">
-          {commitments.map((c) => (
-            <article class="commit-item">
-              <span class="commit-mark" aria-hidden="true">{c.mark}</span>
-              <h3 class="commit-title">{c.title}</h3>
-              <p class="commit-description">{c.description}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact">
-      <div class="container">
-        <article class="contact-card">
-          <div class="contact-content">
-            <SectionLabel number="03" label="CONTACT · 聯絡我們" />
-            <h2 class="contact-title">與我聯絡</h2>
-            <p class="contact-lead">
-              服務處每週一至週五 9:00–17:00 開放。歡迎電話、來訪、來信。
-            </p>
-          </div>
-
-          <div class="contact-info">
-            <ul>
-              <li>
-                <span class="info-key">ADDR</span>
-                <span class="info-value">{site.contact.address}</span>
-              </li>
-              <li>
-                <span class="info-key">TEL</span>
-                <a href={`tel:${site.contact.phone}`} class="info-value link">{site.contact.phone}</a>
-              </li>
-              <li>
-                <span class="info-key">HRS</span>
-                <span class="info-value">{site.contact.hours}</span>
-              </li>
-            </ul>
-            <a href={`tel:${site.contact.phone}`} class="contact-cta">
-              <span>撥打服務處電話</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-  <Footer />
-</BaseLayout>
+        </nav>
+      </article>
+    </main>
+  </body>
+</html>
 
 <style>
-  .section {
-    padding: var(--space-7) 0;
+  :root {
+    --paper: #f3f4f2;
+    --ink: #23282b;
+    --muted: #6d7570;
+    --line: #d9dcd6;
+    --accent: #8a6d4b;
+    --card: #fbfcfa;
   }
-
-  .section-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    color: var(--color-primary);
-    margin-bottom: var(--space-3);
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
-
-  .section-intro {
-    max-width: 38em;
-    color: var(--color-text-mute);
-    font-size: 1rem;
-    line-height: 1.75;
-    margin-bottom: var(--space-6);
-  }
-
-  /* Policies */
-  .policy-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-  }
-
-  @media (min-width: 720px) {
-    .policy-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-4);
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #16181a;
+      --ink: #e6e8e4;
+      --muted: #98a09a;
+      --line: #2b2f31;
+      --accent: #c2a077;
+      --card: #1c1f21;
     }
   }
-
-  /* Commitments */
-  .commitments {
-    background: color-mix(in srgb, var(--color-primary) 3%, var(--color-bg));
-    position: relative;
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
   }
-
-  .commitments::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 800px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--color-border) 50%, transparent 100%);
+  .wrap { min-height: 100%; display: grid; place-items: center; padding: 32px 20px; }
+  .card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 44px 34px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
-
-  .commit-grid {
+  .eyebrow {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .name { font-size: 40px; letter-spacing: 0.06em; margin: 0; line-height: 1.1; color: var(--ink); }
+  .district {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 8px 0 0;
+  }
+  .rule { display: block; width: 40px; height: 2px; background: var(--accent); margin: 26px auto; }
+  .headline { font-size: 20px; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 10px; }
+  .lead {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+  .contact {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    text-align: left;
+    margin: 0 0 24px;
+    border-top: 1px solid var(--line);
+  }
+  .contact .row {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    margin-top: var(--space-5);
+    grid-template-columns: 60px 1fr;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
   }
-
-  @media (min-width: 720px) {
-    .commit-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-5);
-    }
+  .contact dt { color: var(--muted); font-size: 11px; letter-spacing: 0.1em; padding-top: 2px; }
+  .contact dd { margin: 0; color: var(--ink); line-height: 1.5; }
+  .contact a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   }
-
-  .commit-item {
-    position: relative;
-    padding-top: var(--space-5);
-  }
-
-  .commit-mark {
-    position: absolute;
-    top: -8px;
-    left: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    background: var(--color-accent);
-    color: var(--color-primary);
-    font-family: var(--font-serif);
-    font-size: 1.75rem;
-    font-weight: 700;
-    border-radius: 50%;
-    z-index: 1;
-    box-shadow: 0 0 0 6px var(--color-bg);
-  }
-
-  .commit-title {
-    margin-top: var(--space-5);
-    font-family: var(--font-serif);
-    font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--space-2);
-    line-height: 1.3;
-  }
-
-  .commit-description {
-    font-size: 0.95rem;
-    color: var(--color-text-mute);
-    line-height: 1.7;
-  }
-
-  /* Contact */
-  .contact-card {
-    background: var(--color-primary);
-    color: var(--color-bg);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6) var(--space-5);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--color-accent) 28%, transparent) 0%, transparent 50%),
-      radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--color-secondary) 60%, transparent) 0%, transparent 40%);
-    pointer-events: none;
-  }
-
-  @media (min-width: 720px) {
-    .contact-card {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-7);
-      padding: var(--space-7);
-    }
-  }
-
-  .contact-content,
-  .contact-info {
-    position: relative;
-  }
-
-  .contact-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 3.5vw, 2.5rem);
-    color: var(--color-bg);
-    margin-bottom: var(--space-3);
-    line-height: 1.2;
-  }
-
-  .contact-lead {
-    color: color-mix(in srgb, var(--color-bg) 80%, transparent);
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 28em;
-  }
-
-  .contact-info ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: var(--space-5);
-    border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);
-  }
-
-  .contact-info li {
+  .contact a:hover { color: var(--ink); }
+  .social {
     display: flex;
-    gap: var(--space-3);
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 12%, transparent);
+    justify-content: center;
+    gap: 18px;
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 13px;
   }
-
-  .info-key {
-    flex-shrink: 0;
-    width: 48px;
-    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    color: var(--color-accent);
-    padding-top: 4px;
-  }
-
-  .info-value {
-    flex: 1;
-    color: var(--color-bg);
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-
-  .info-value.link {
-    color: var(--color-bg);
-    text-decoration: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 30%, transparent);
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .info-value.link:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-
-  .contact-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-4);
-    background: var(--color-accent);
-    color: var(--color-primary);
-    font-weight: 600;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    transition: transform 0.2s, background 0.2s;
-  }
-
-  .contact-cta:hover {
-    background: color-mix(in srgb, var(--color-accent) 88%, white);
-    color: var(--color-primary);
-    transform: translateY(-1px);
-    text-decoration: none;
-  }
+  .social a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+  .social a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  @media (prefers-reduced-motion: no-preference) { .social a, .contact a { transition: color 0.15s, border-color 0.15s; } }
 </style>

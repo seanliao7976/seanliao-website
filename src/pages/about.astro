@@ -1,427 +1,138 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import SectionLabel from '../components/SectionLabel.astro';
-import TimelineItem from '../components/TimelineItem.astro';
-import PolicyCard from '../components/PolicyCard.astro';
+// 暫時鎖站——網站建置中 holding page（內容 WIP，待獨立專案完成後 `git revert` 復原）。
+// 自足頁：不 import Nav/Footer/BaseLayout，避免連到已鎖起來的路由。
 import { site } from '../data/site';
-
-const timeline = [
-  {
-    step: 'STEP 01',
-    year: '[年份範圍]',
-    role: '餐廳創業',
-    org: '[公司名稱]',
-    description: '[在學期間或畢業後創業，學到了什麼。從 SeanOS bio-variants.md 抽出時間和敘述。]',
-  },
-  {
-    step: 'STEP 02',
-    year: '2014–2019',
-    role: '公務幕僚',
-    org: '臺中市政府（胡市長辦公室）',
-    description: '[5.5 年公部門經驗：從市長秘書、市議員幕僚、市府不同職位。為什麼這段最關鍵。]',
-  },
-  {
-    step: 'STEP 03',
-    year: '2019–2022',
-    role: '科技公司執行長',
-    org: '[公司名稱]',
-    description: '[資料技術相關科技公司，3 年產業歷練。寫程式的視角如何看公共政策。]',
-  },
-  {
-    step: 'STEP 04',
-    year: '2022–2024',
-    role: '中國國民黨發言人',
-    org: '中國國民黨',
-    description: '[發言人期間的政策溝通與媒體角色。為何這段準備了立委之路。]',
-  },
-  {
-    step: 'STEP 05',
-    year: '2024–',
-    role: '中華民國第十一屆立法委員',
-    org: '中華民國立法院',
-    description: '[第 4 選區當選 119,740 票（50.02%）／社福衛環委員會召集委員／任期重點。]',
-    isLast: true,
-  },
-];
-
-const coreIssues = [
-  { number: '01', title: '醫療健保', description: '[1-2 行政策方向。從 values-scaffold.yaml 抽。]' },
-  { number: '02', title: 'AI 與數位教育', description: '[1-2 行政策方向。]' },
-  { number: '03', title: '居住正義', description: '[1-2 行政策方向。]' },
-  { number: '04', title: '能源與環境', description: '[1-2 行政策方向。]' },
-  { number: '05', title: '兒少保護', description: '[1-2 行政策方向。]' },
-  { number: '06', title: '心理健康', description: '[1-2 行政策方向。]' },
-];
+const tel = site.contact.phone.replace(/[^0-9+]/g, '');
 ---
-<BaseLayout
-  title={`關於我｜${site.name}`}
-  description={`${site.legislator}，${site.committee}${site.role}。${site.district}。跨域背景：餐廳創業 → 公務幕僚 → 科技公司執行長 → 立委。`}
->
-  <Nav />
-  <main id="main">
-    <section class="page-header">
-      <div class="container">
-        <SectionLabel number="00" label="ABOUT · 關於我" />
-        <h1 class="page-title">
-          關於 <span class="title-em">廖偉翔</span>
-        </h1>
-        <p class="page-subtitle">{site.legislator}　·　{site.district}</p>
-      </div>
-    </section>
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.name}｜網站建置中</title>
+    <meta name="robots" content="noindex" />
+    <meta name="description" content={`${site.name}（${site.legislator}）官方網站建置中，敬請期待。服務處持續為鄉親服務。`} />
+  </head>
+  <body>
+    <main class="wrap">
+      <article class="card">
+        <p class="eyebrow">{site.legislator}</p>
+        <h1 class="name">{site.name}</h1>
+        <p class="district">{site.district}</p>
 
-    <section class="section bio">
-      <div class="container bio-grid">
-        <aside class="bio-sidebar">
-          <div class="bio-portrait">
-            <img
-              src="/photos/portrait.jpg"
-              alt="廖偉翔"
-              width="640"
-              height="800"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-          <dl class="bio-meta">
-            <div>
-              <dt>選區</dt>
-              <dd>{site.district}</dd>
-            </div>
-            <div>
-              <dt>委員會</dt>
-              <dd>{site.committee}</dd>
-            </div>
-            <div>
-              <dt>角色</dt>
-              <dd>{site.role}</dd>
-            </div>
-          </dl>
-        </aside>
+        <span class="rule" aria-hidden="true"></span>
 
-        <article class="bio-content">
-          <SectionLabel number="01" label="BIO · 自我介紹" />
-          <h2 class="bio-heading">[一句話自述：12-20 字，定位你是誰、為何從政]</h2>
-          <p>[BIO 第一段：成長背景與從政動機。從 SeanOS bio-variants.md §3 改寫，套上 voice.md 的「我」「其實」標記詞。]</p>
-          <p>[BIO 第二段：跨域歷練如何形塑政策視角。承接下方 Timeline。]</p>
-          <p>[BIO 第三段：對選區與選民的承諾。連結到核心議題。]</p>
-        </article>
-      </div>
-    </section>
+        <p class="headline">網站建置中</p>
+        <p class="lead">官網正在重新整理，敬請期待。<br />服務處持續為鄉親服務，歡迎來電或來訪。</p>
 
-    <section class="section timeline-section">
-      <div class="container">
-        <SectionLabel number="02" label="JOURNEY · 跨域走來" />
-        <h2 class="section-title">五段路</h2>
-        <p class="section-intro">
-          [一段話：餐廳 → 公務 → 科技 → 政治發言 → 立委。每一段帶來什麼，為何回到立法院。]
-        </p>
+        <dl class="contact">
+          <div class="row"><dt>服務處</dt><dd>{site.contact.address}</dd></div>
+          <div class="row"><dt>電話</dt><dd><a href={`tel:${tel}`}>{site.contact.phone}</a></dd></div>
+          <div class="row"><dt>時間</dt><dd>{site.contact.hours}</dd></div>
+        </dl>
 
-        <div class="timeline">
-          {timeline.map((t) => (
-            <TimelineItem
-              step={t.step}
-              year={t.year}
-              role={t.role}
-              org={t.org}
-              description={t.description}
-              isLast={t.isLast}
-            />
+        <nav class="social" aria-label="社群連結">
+          {site.social.map((s) => (
+            <a href={s.url} target="_blank" rel="noopener">{s.name}</a>
           ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section issues-section">
-      <div class="container">
-        <SectionLabel number="03" label="ISSUES · 關注議題" />
-        <h2 class="section-title">六個議題，持續推進</h2>
-        <p class="section-intro">
-          [一段話：作為社福衛環委員會召集委員，這些是任期內持續推進的議題。後續會有獨立頁面深入。]
-        </p>
-
-        <div class="issues-grid">
-          {coreIssues.map((p) => (
-            <PolicyCard number={p.number} title={p.title} description={p.description} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section office-section">
-      <div class="container">
-        <SectionLabel number="04" label="OFFICE · 服務處" />
-        <h2 class="section-title">服務處</h2>
-
-        <div class="office-grid">
-          <div class="office-info">
-            <dl>
-              <div class="office-row">
-                <dt>地址</dt>
-                <dd>{site.contact.address}</dd>
-              </div>
-              <div class="office-row">
-                <dt>電話</dt>
-                <dd><a href={`tel:${site.contact.phone}`}>{site.contact.phone}</a></dd>
-              </div>
-              <div class="office-row">
-                <dt>開放時間</dt>
-                <dd>{site.contact.hours}</dd>
-              </div>
-            </dl>
-          </div>
-          <div class="office-note">
-            <p>[一段話：服務處運作方式 / 預約 / 重大議題如何聯繫 / 助理團隊。]</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <Footer />
-</BaseLayout>
+        </nav>
+      </article>
+    </main>
+  </body>
+</html>
 
 <style>
-  .page-header {
-    padding: var(--space-7) 0 var(--space-5);
-    border-bottom: 1px solid var(--color-border);
+  :root {
+    --paper: #f3f4f2;
+    --ink: #23282b;
+    --muted: #6d7570;
+    --line: #d9dcd6;
+    --accent: #8a6d4b;
+    --card: #fbfcfa;
   }
-
-  .page-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
-    color: var(--color-primary);
-    letter-spacing: 0.02em;
-    margin-bottom: var(--space-3);
-    line-height: 1.1;
-  }
-
-  .title-em {
-    font-style: italic;
-    color: var(--color-accent-dark);
-  }
-
-  .page-subtitle {
-    color: var(--color-text-mute);
-    font-size: 1.05rem;
-  }
-
-  .section {
-    padding: var(--space-7) 0;
-  }
-
-  .section-title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.875rem, 4vw, 2.625rem);
-    color: var(--color-primary);
-    margin-bottom: var(--space-3);
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
-
-  .section-intro {
-    max-width: 38em;
-    color: var(--color-text-mute);
-    font-size: 1rem;
-    line-height: 1.75;
-    margin-bottom: var(--space-6);
-  }
-
-  /* Bio */
-  .bio-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  @media (min-width: 880px) {
-    .bio-grid {
-      grid-template-columns: 320px 1fr;
-      gap: var(--space-7);
-      align-items: start;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #16181a;
+      --ink: #e6e8e4;
+      --muted: #98a09a;
+      --line: #2b2f31;
+      --accent: #c2a077;
+      --card: #1c1f21;
     }
   }
-
-  .bio-sidebar {
-    position: relative;
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
   }
-
-  @media (min-width: 880px) {
-    .bio-sidebar {
-      position: sticky;
-      top: 96px;
-    }
-  }
-
-  .bio-portrait {
-    aspect-ratio: 1 / 1;
-    background: var(--color-primary);
-    border-radius: var(--radius);
-    margin-bottom: var(--space-4);
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .bio-portrait img {
+  .wrap { min-height: 100%; display: grid; place-items: center; padding: 32px 20px; }
+  .card {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 22%;
-    display: block;
+    max-width: 460px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 44px 34px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
-
-  .bio-portrait::after {
-    content: '';
-    position: absolute;
-    top: var(--space-2);
-    left: var(--space-2);
-    width: 22px;
-    height: 22px;
-    border-top: 2px solid var(--color-accent);
-    border-left: 2px solid var(--color-accent);
-    pointer-events: none;
-    z-index: 1;
+  .eyebrow {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin: 0 0 10px;
   }
-
-  .bio-meta {
-    border-top: 1px solid var(--color-border);
+  .name { font-size: 40px; letter-spacing: 0.06em; margin: 0; line-height: 1.1; color: var(--ink); }
+  .district {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 8px 0 0;
   }
-
-  .bio-meta > div {
+  .rule { display: block; width: 40px; height: 2px; background: var(--accent); margin: 26px auto; }
+  .headline { font-size: 20px; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 10px; }
+  .lead {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+  .contact {
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    text-align: left;
+    margin: 0 0 24px;
+    border-top: 1px solid var(--line);
+  }
+  .contact .row {
     display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: var(--space-3);
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid var(--color-border);
-    font-size: 0.95rem;
+    grid-template-columns: 60px 1fr;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
   }
-
-  .bio-meta dt {
-    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-text-mute);
-    padding-top: 4px;
-  }
-
-  .bio-meta dd {
-    color: var(--color-text);
-    font-weight: 500;
-    line-height: 1.5;
-  }
-
-  .bio-content {
-    font-size: 1.05rem;
-    line-height: 1.85;
-    color: var(--color-text);
-  }
-
-  .bio-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 3vw, 2.125rem);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: var(--space-2) 0 var(--space-4);
-    letter-spacing: 0.01em;
-    line-height: 1.4;
-  }
-
-  .bio-content p {
-    margin-bottom: var(--space-4);
-    max-width: 38em;
-  }
-
-  /* Timeline */
-  .timeline-section {
-    background: color-mix(in srgb, var(--color-primary) 3%, var(--color-bg));
-  }
-
-  .timeline {
-    margin-top: var(--space-5);
-    max-width: 720px;
-  }
-
-  /* Issues */
-  .issues-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-    margin-top: var(--space-5);
-  }
-
-  @media (min-width: 600px) {
-    .issues-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 960px) {
-    .issues-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  /* Office */
-  .office-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-    margin-top: var(--space-5);
-  }
-
-  @media (min-width: 720px) {
-    .office-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-7);
-    }
-  }
-
-  .office-info dl {
-    border-top: 1px solid var(--color-border);
-  }
-
-  .office-row {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: var(--space-3);
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .office-row dt {
-    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-text-mute);
-    padding-top: 4px;
-  }
-
-  .office-row dd {
-    color: var(--color-text);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.55;
-  }
-
-  .office-row dd a {
-    color: inherit;
-    border-bottom: 1px solid var(--color-border);
+  .contact dt { color: var(--muted); font-size: 11px; letter-spacing: 0.1em; padding-top: 2px; }
+  .contact dd { margin: 0; color: var(--ink); line-height: 1.5; }
+  .contact a {
+    color: var(--accent);
     text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   }
-
-  .office-row dd a:hover {
-    color: var(--color-accent-dark);
-    border-color: var(--color-accent);
-    text-decoration: none;
+  .contact a:hover { color: var(--ink); }
+  .social {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    font-family: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+    font-size: 13px;
   }
-
-  .office-note {
-    padding-top: var(--space-2);
-    color: var(--color-text-mute);
-    line-height: 1.75;
-    max-width: 30em;
-  }
+  .social a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+  .social a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  @media (prefers-reduced-motion: no-preference) { .social a, .contact a { transition: color 0.15s, border-color 0.15s; } }
 </style>
