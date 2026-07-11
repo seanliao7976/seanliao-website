@@ -1,0 +1,45 @@
+name: CI
+
+# SEA-164 CI/CD Phase 0：build + astro check + 佔位符/內部檔名洩漏 gate。
+# 佔位符 gate 是 SEA-160 事故（公開站顯示撰稿指示文字並洩漏 bio-variants.md/voice.md）的預防。
+# main 的部署由 deploy.yml 負責；本 workflow 專職「上線前擋爛內容」。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-gate:
+    name: build + astro check + placeholder gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Astro type check
+        # @astrojs/check 未列入 devDependencies（避免動 lockfile）→ CI 內臨時裝，不寫回 lock。
+        run: |
+          npm i --no-save --no-package-lock @astrojs/check typescript
+          npx astro check
+
+      - name: Build
+        run: npm run build
+
+      - name: 佔位符 / 內部檔名洩漏 gate（SEA-160 預防）
+        # 掃全部文字輸出（非僅 .html）；grep 錯誤碼 fail-closed。與 deploy.yml 共用同一 script。
+        run: sh scripts/placeholder-gate.sh dist
