@@ -15,8 +15,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # SEA-164/SEA-160：部署前置 gate。build/deploy 皆 needs 它 → gate 失敗就不會上線，
+  # 不依賴 branch protection 是否設好（deploy 與 CI 各自 push:main 觸發，故在此把關）。
+  gate:
+    name: 佔位符 gate（上線前擋 SEA-160）
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install & build
+        run: |
+          npm ci
+          npm run build
+      - name: 佔位符 / 內部檔名洩漏 gate
+        run: sh scripts/placeholder-gate.sh dist
+
   build:
     name: Build
+    needs: gate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
